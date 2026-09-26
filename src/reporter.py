@@ -22,16 +22,3 @@ class DataFrameReporter:
         print('Количество пропусков:', df.isna().sum().sum())
         
         print('Доля пропусков:', format(df.isna().mean(axis=None), self.float_format))
-
-
-import pandas as pd
-
-data = pd.read_csv('data/payments.csv')
-
-# Проверки правильности работы show_report с разными настройками
-reporter_1 = DataFrameReporter(float_format='0.02f', percent_format='0.03%')
-reporter_2 = DataFrameReporter(float_format='0.03f', percent_format='0.01%', include_all=True)
-
-reporter_1.show_report(data, 'Отчёт в формате 1:')
-print()
-reporter_2.show_report(data, 'Отчёт в формате 2:')
